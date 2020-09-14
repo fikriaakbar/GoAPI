@@ -43,7 +43,7 @@ func InsertDb(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	rows, err := db.Query("insert into DATA_BARANG(NAMA_BARANG, JUMLAH_BARANG, TANGGAL_DIMASUKAN, TANGGAL_UPDATE) VALUES('Air Jordan 7', 100, time.Now(), time.Now())")
+	rows, err := db.Query("insert into DATA_BARANG(NAMA_BARANG, JUMLAH_BARANG, TANGGAL_DIMASUKAN, TANGGAL_UPDATE) VALUES('Air Jordan 7', 100, SYSDATE, SYSDATE)")
 	if err != nil {
 		fmt.Println("Error insert to DB")
 		fmt.Println(err)
