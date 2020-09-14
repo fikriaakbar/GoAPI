@@ -1,8 +1,9 @@
 package controller
 
 import (
-	"github.com/fikriaakbar/GoAPI/gocode/database"
 	"net/http"
+
+	"github.com/fikriaakbar/GoAPI/gocode/database"
 
 	"github.com/fikriaakbar/GoAPI/gocode/page"
 
