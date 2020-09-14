@@ -36,7 +36,7 @@ func SelectDbDate(w http.ResponseWriter, r *http.Request) {
 
 //InsertDb func
 func InsertDb(w http.ResponseWriter, r *http.Request) {
-	db, err := sql.Open("godror", "<your username>/<your password>@service_name")
+	db, err := sql.Open("godror", "hasibuan/hasibuan1@xe")
 	if err != nil {
 		fmt.Println(err)
 		return
