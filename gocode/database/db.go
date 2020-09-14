@@ -36,26 +36,25 @@ func SelectDbDate(w http.ResponseWriter, r *http.Request) {
 
 //InsertDb func
 func InsertDb(w http.ResponseWriter, r *http.Request) {
-	db, err := sql.Open("godror", "hasibuan/hasibuan1@xe")
+	db, err := sql.Open("godror", "<your username>/<your password>@service_name")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	defer db.Close()
 
-	stmt, err := db.Prepare("insert into DATA_BARANG(NAMA_BARANG, JUMLAH_BARANG, TANGGAL_DIMASUKAN, TANGGAL_UPDATE) VALUES(:1, :2, :3, :4)")
+	rows, err := db.Query("insert into DATA_BARANG(NAMA_BARANG, JUMLAH_BARANG, TANGGAL_DIMASUKAN, TANGGAL_UPDATE) VALUES('Air Jordan 7', 100, time.Now(), time.Now())")
 	if err != nil {
+		fmt.Println("Error insert to DB")
 		fmt.Println(err)
 		return
 	}
+	defer rows.Close()
 
-	res, err := db.Query("AIR JORDAN 4", 10, "NOW()", "NOW()")
-	if err != nil {
-		fmt.Println(".....Error Inserting data")
-		fmt.Println(err)
-		return
+	var thedate string
+	for rows.Next() {
+
+		rows.Scan(&thedate)
 	}
-
-	rowCnt := res.RowsAffected()
-	fmt.Println(rowCnt, "rows inserted.")
+	fmt.Printf("Finish Insert %s", thedate)
 }
